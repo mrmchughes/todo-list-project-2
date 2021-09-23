@@ -1,13 +1,12 @@
 import {contentDiv} from "./index.js";
-import {createNewProject, createNewTODO} from './todoNewDisplay.js';
+import {createNewProject, createNewTODO} from './todoFactory.js';
+import {selectProjectDiv} from "./projectSelectList.js";
 //import {projectsArray} from "./todoNewDisplay.js";
 
 export let userInterfaceDiv = document.createElement("div");
 userInterfaceDiv.id = "userInterfaceDiv";
 
 export function userInterface() {
-    
-
     let titleInputDiv = document.createElement("div");
 
     let titleInputLabel = document.createElement("label");
@@ -51,27 +50,35 @@ export function userInterface() {
     let dueDateInput = document.createElement("input");
     dueDateInput.setAttribute("type", "text");
     dueDateInput.setAttribute("id", "dueDateInput");
-    dueDateInput.setAttribute("name", "dueDateInput")
-    dueDateInput.setAttribute("placeholder", "Enter a dueDate for your TODO");
-    dueDateInput.setAttribute("require", "");
+    //dueDateInput.setAttribute("name", "dueDateInput")
+    dueDateInput.setAttribute("placeholder", "Popup");
+    //dueDateInput.setAttribute("require", "");
 
-    userInterfaceDiv.appendChild(dueDateInputLabel);
-    userInterfaceDiv.appendChild(dueDateInput);
+    dueDateInputDiv.appendChild(dueDateInputLabel);
+    dueDateInputDiv.appendChild(dueDateInput);
+    userInterfaceDiv.appendChild(dueDateInputDiv);
+
+    let priorityInputDiv = document.createElement("div");
 
     let priorityInputLabel = document.createElement("label");
     priorityInputLabel.textContent = "Todo Priority: "
     priorityInputLabel.setAttribute("for", "priorityInput");
 
-    let priorityInput = document.createElement("input");
-    priorityInput.setAttribute("type", "text");
+    let priorityInput = document.createElement("select");
     priorityInput.setAttribute("id", "priorityInput");
     priorityInput.setAttribute("name", "priorityInput")
-    priorityInput.setAttribute("placeholder", "Enter a priority for your TODO");
-    priorityInput.setAttribute("require", "");
 
-    dueDateInputDiv.appendChild(priorityInputLabel);
-    dueDateInputDiv.appendChild(priorityInput);
-    userInterfaceDiv.appendChild(dueDateInputDiv);
+    for(let i = 1; i < 4; i++) {
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = i;
+        opt.innerHTML = i;
+        priorityInput.appendChild(opt);
+    }
+
+    priorityInputDiv.appendChild(priorityInputLabel);
+    priorityInputDiv.appendChild(priorityInput);
+    userInterfaceDiv.appendChild(priorityInputDiv);
 
     let notesInputDiv = document.createElement("div");
 
@@ -90,6 +97,8 @@ export function userInterface() {
     notesInputDiv.appendChild(notesInput);
     userInterfaceDiv.appendChild(notesInputDiv);
 
+    userInterfaceDiv.appendChild(selectProjectDiv);
+
     let projectInputDiv = document.createElement("div");
     projectInputDiv.setAttribute("id", "projectInputDiv");
 
@@ -104,26 +113,25 @@ export function userInterface() {
     projectInput.setAttribute("placeholder", "Enter the name of your new project: ");
     projectInput.setAttribute("require", "");
 
-    projectInputDiv.appendChild(projectInputLabel);
-    projectInputDiv.appendChild(projectInput);
-    userInterfaceDiv.appendChild(projectInputDiv);
-
-
-    let createNewTODOButton = document.createElement("button");
-    createNewTODOButton.innerText = "Add a new Todo";
-    createNewTODOButton.setAttribute("id", "createNewTODOButton");
-
     let createNewProjectButton = document.createElement("button");
     createNewProjectButton.innerText = "Create a new project";
     createNewProjectButton.setAttribute("id", "createNewProjectButton")
 
+    projectInputDiv.appendChild(projectInputLabel);
+    projectInputDiv.appendChild(projectInput);
+    projectInputDiv.appendChild(createNewProjectButton);
+
+    let createNewTODOButton = document.createElement("button");
+    createNewTODOButton.innerText = "Add a new Todo";
+    createNewTODOButton.setAttribute("id", "createNewTODOButton");
+    
     let todoDisplayButton = document.createElement("button");
     todoDisplayButton.innerText = "Display Current Todos";
     todoDisplayButton.setAttribute("id", "todoDisplayButton");
     
     userInterfaceDiv.appendChild(createNewTODOButton);
-    userInterfaceDiv.appendChild(createNewProjectButton);
     userInterfaceDiv.appendChild(todoDisplayButton);
+    userInterfaceDiv.appendChild(projectInputDiv);
 
     contentDiv.appendChild(userInterfaceDiv);
 

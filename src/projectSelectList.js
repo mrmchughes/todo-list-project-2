@@ -1,10 +1,9 @@
-import {projectsArray} from "./todoNewDisplay.js";
+import {projectsArray} from "./todoFactory.js";
 
-
+export let selectProjectDiv = document.createElement("div");
+selectProjectDiv.setAttribute("id", 'selectProjectDiv');
 
 export function createProjectList(){
-    let selectProjectDiv = document.createElement("div");
-    selectProjectDiv.setAttribute("id", 'selectProjectDiv');
 
     let selectProjectLabel = document.createElement("label");
     selectProjectLabel.textContent = "Todo Project Selector: ";
@@ -24,5 +23,4 @@ export function createProjectList(){
     }
     
     selectProjectDiv.appendChild(selectProject);
-    userInterfaceDiv.appendChild(selectProjectDiv);
 };

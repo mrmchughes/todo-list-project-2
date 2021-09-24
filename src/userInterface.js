@@ -1,10 +1,12 @@
 import {contentDiv} from "./index.js";
-import {createNewProject, createNewTODO} from './todoFactory.js';
+import {createNewTODO} from './todoFactory.js';
 import {selectProjectDiv} from "./projectSelectList.js";
+//import {projectsDisplay} from "./dataStructure.js";
 //import {projectsArray} from "./todoNewDisplay.js";
 
 export let userInterfaceDiv = document.createElement("div");
 userInterfaceDiv.id = "userInterfaceDiv";
+userInterfaceDiv.className = "userInterfaceDiv";
 
 export function userInterface() {
     let titleInputDiv = document.createElement("div");
@@ -99,51 +101,35 @@ export function userInterface() {
 
     userInterfaceDiv.appendChild(selectProjectDiv);
 
-    let projectInputDiv = document.createElement("div");
-    projectInputDiv.setAttribute("id", "projectInputDiv");
-
-    let projectInputLabel = document.createElement("label");
-    projectInputLabel.textContent = "New Todo Project: ";
-    projectInputLabel.setAttribute("for", "projectInput");
-
-    let projectInput = document.createElement("input");
-    projectInput.setAttribute("type", "text");
-    projectInput.setAttribute("id", "projectInput");
-    projectInput.setAttribute("name", "projectInput")
-    projectInput.setAttribute("placeholder", "Enter the name of your new project: ");
-    projectInput.setAttribute("require", "");
-
-    let createNewProjectButton = document.createElement("button");
-    createNewProjectButton.innerText = "Create a new project";
-    createNewProjectButton.setAttribute("id", "createNewProjectButton")
-
-    projectInputDiv.appendChild(projectInputLabel);
-    projectInputDiv.appendChild(projectInput);
-    projectInputDiv.appendChild(createNewProjectButton);
-
     let createNewTODOButton = document.createElement("button");
     createNewTODOButton.innerText = "Add a new Todo";
     createNewTODOButton.setAttribute("id", "createNewTODOButton");
     
-    let todoDisplayButton = document.createElement("button");
-    todoDisplayButton.innerText = "Display Current Todos";
-    todoDisplayButton.setAttribute("id", "todoDisplayButton");
+    //let todoDisplayButton = document.createElement("button");
+    //todoDisplayButton.innerText = "Display Current Todos";
+    //todoDisplayButton.setAttribute("id", "todoDisplayButton");
     
     userInterfaceDiv.appendChild(createNewTODOButton);
-    userInterfaceDiv.appendChild(todoDisplayButton);
-    userInterfaceDiv.appendChild(projectInputDiv);
+    //userInterfaceDiv.appendChild(todoDisplayButton);
+    //userInterfaceDiv.appendChild(projectInputDiv);
 
     contentDiv.appendChild(userInterfaceDiv);
 
-    let projectContainer = document.createElement("div");
-    projectContainer.setAttribute("id", "projectContainer");
+    //let projectContainer = document.createElement("div");
+    //projectContainer.setAttribute("id", "projectContainer");
 
     //createNewTODOButton runs the createNewTODO() function
     document.getElementById("createNewTODOButton").addEventListener('click', createNewTODO);
     
-    //createNewProjectButton runs the createNewProject() function
-    document.getElementById("createNewProjectButton").addEventListener('click', createNewProject);
+    let closeButton = document.createElement("button");
+        closeButton.textContent = "Close";
+
+    closeButton.addEventListener("click", function(){
+        userInterfaceDiv.style.display = "none";
+    });
+
+    userInterfaceDiv.appendChild(closeButton);
 
     //todoDisplayButton runs the todoDisplay() function
-        //document.getElementById("todoDisplayButton").addEventListener('click', todoDisplay);
+    //document.getElementById("todoDisplayButton").addEventListener('click', projectsDisplay);
 }

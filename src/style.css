@@ -2,6 +2,30 @@
   margin: 10px;
 }
 
+.projectDiv {
+  border: 1px solid red;
+  margin: 10px;
+}
+
+.userInterfaceDiv {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-50%, 5%);
+  border: 5 px solid blue;
+  background-color: grey;
+}
+
+.todoDiv {
+  border: 1px solid purple;
+  margin-top: 10px;
+}
+
+.projectDeleteButton {
+  margin-left: 10px;
+}
+
 /* (A) POPUP */
 .picker-wrap {
   position: fixed;

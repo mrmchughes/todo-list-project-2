@@ -1,95 +1,96 @@
-//each project will be an object
-    //export class TODOProject{
-        //constructor(projectName){
-            //this.projectName = projectName;
-            //this.todos = new Array();
-        //}
-    //}
+import {contentDiv} from "./index.js";
+import {projectsArray} from "./todoFactory.js";
+import {userInterfaceDiv} from "./userInterface.js";
+//import {createNewTODO} from "./todoFactory.js";
 
-    //export class TODO {
-        //constructor(title, description, dueDate, priority, notes){
-            //this.title = title;
-            //this.description = description;
-            //this.dueDate = dueDate;
-            //this.priority = priority;
-            //this.notes = notes;
-        //};
-    //}
-    
-    
-//onload() {
-    //store projects within an array themselves ?
-    //const projectsArray = document.createElement('array');
+let projectsDisplayDiv = document.createElement("div");
 
-    //userInterface()
-    //let default Project = new TODOProject();
-    //projectsArray.push(defaultProject);
-        //display "unpacked" arrays on screen
-//}
+export function projectsDisplay(){
+    projectsDisplayDiv.innerHTML = '';
 
-//Button: Create a new Project
-    //function createNewProject() {
-        //loop through all projects in the array
+    for (const [i] in projectsArray) {
+        let projectDiv = document.createElement("div");
+        projectDiv.setAttribute("class", "projectDiv");
+        projectDiv.innerText = projectsArray[i].projectName;
 
-            //for (const project of projects) {
-                //if (project.projectName === projectSelector.value) {
-                    //alert('This project already exists');
-                    //projectSelector.value = '';
-                //} 
-            //} else {
-                //projectsArray.push(let projectSelector.value = newTODOProject)
-                //projectSelector.value = ''; 
-            //}
-    //}
+        let createNewTODOButton = document.createElement("button");
+        createNewTODOButton.innerText = "Add a new Todo";
+        createNewTODOButton.setAttribute("id", "createNewTODOButton");
 
-    
+        createNewTODOButton.addEventListener("click", function(){
+            userInterfaceDiv.style.display = "block";
+        })
 
-//Button: Create a new todo
-    //function createNewTODO() {
-        //when user enters variables, create a new todo object, and push to default project array
-    //}
+        projectDiv.appendChild(createNewTODOButton);
 
-    //when user creates a todo object, enter variables, and require them to choose a project to add the todo object to
-    //upon submission of the todo object, loop through the project object array 
-        
-    //and:
-        //if a project object already exists with the same name, add the todo object to the project array
-        //else the project does not already exist, create a new project object with the name, and add the todo object to the project array
+        let projectDeleteButton = document.createElement("button");
+        projectDeleteButton.setAttribute("class", "projectDeleteButton");
+        projectDeleteButton.textContent = 'Click to delete project';
 
+        projectDeleteButton.addEventListener("click", function(){
+            projectsArray.splice(i, 1);
+            let jsonProjectsArray = JSON.stringify(projectsArray);
+            localStorage.setItem('projectsArray', jsonProjectsArray); 
+            console.log(projectsArray);
+            projectsDisplay();
+        });
 
+        projectDiv.appendChild(projectDeleteButton);
 
-//displayProjectsArray
-    //const projectsArrayDiv = document.createElement('div');
-        //projectsArrayDiv.innerHTML = '';
-            //projectsArrayDiv.appendChild('projectsArray').toString();
+            for (const todo of projectsArray[i].todos){
+                let todoDiv = document.createElement("div");
+                todoDiv.setAttribute("class", "todoDiv");
+                let todoDivTextDiv = document.createElement("div");
+
+                todoDivTextDiv.innerText += todo.title;
+                todoDivTextDiv.innerText += "\n Due on: " + todo.dueDate;
+
+                let editButton = document.createElement("button");
+                editButton.textContent = "Click to edit this dodo";
+                editButton.addEventListener("click", function(){
+                    //edit form fields
+                    console.log("I'm editButton");
+                    userInterfaceDiv.style.display = "block";
+                })
                 
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Click to delete todo";
+                deleteButton.addEventListener("click", function(){
+                    projectsArray[i].todos.splice(todo, 1);
+                    let jsonProjectsArray = JSON.stringify(projectsArray);
+                    localStorage.setItem('projectsArray', jsonProjectsArray); 
+                    console.log(projectsArray);
+                    projectsDisplay();
+                });
 
+                let viewTodoButton = document.createElement("button");
+                viewTodoButton.textContent = "Click to view todo";
+                viewTodoButton.addEventListener("click", function(){
+                    todoDivTextDiv.innerText = '';
+                    todoDivTextDiv.innerText += todo.title;
+                    todoDivTextDiv.innerText += "\n Description: " + todo.description;
+                    todoDivTextDiv.innerText += "\n Due on: " + todo.dueDate;
+                    todoDivTextDiv.innerText += "\n Priority: " + todo.priority;
+                    todoDivTextDiv.innerText += "\n Notes: " + todo.notes;
+                })
 
+                let closeTodoButton = document.createElement("button");
+                closeTodoButton.textContent = "Click to close todo";
+                closeTodoButton.addEventListener("click", function(){
+                    todoDivTextDiv.innerText = '';
+                    todoDivTextDiv.innerText += todo.title;
+                    todoDivTextDiv.innerText += "\n Due on: " + todo.dueDate;
+                })
 
-
-{
-    projectName: 'project1';
-    todos: [
-        {
-            todoName: 'todo 1',
-            todoDescription: 'todo1 description',
-            dueDate: 'Now',
-            priority: 'priority 1',
-            notes: 'Test Test Test'
-        },
-        {
-            todoName: 'todo 2',
-            todoDescription: 'todo2 description',
-            dueDate: 'Now',
-            priority: 'priority 2',
-            notes: 'Test Test Test'
-        },
-        {
-            todoName: 'todo 3',
-            todoDescription: 'todo3 description',
-            dueDate: 'Now',
-            priority: 'priority 3',
-            notes: 'Test Test Test'
-        }
-    ]
-}
+                todoDiv.appendChild(todoDivTextDiv);
+                todoDiv.appendChild(editButton);
+                todoDiv.appendChild(deleteButton);
+                todoDiv.appendChild(viewTodoButton);
+                todoDiv.appendChild(closeTodoButton);
+                projectDiv.appendChild(todoDiv);
+            }
+        
+        projectsDisplayDiv.appendChild(projectDiv);
+        contentDiv.appendChild(projectsDisplayDiv);
+    }
+};

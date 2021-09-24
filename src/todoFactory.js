@@ -1,4 +1,7 @@
 import {createProjectList} from "./projectSelectList.js";
+import {projectsDisplay} from "./dataStructure.js";
+import {userInterfaceDiv} from "./userInterface.js";
+
 export const projectsArray = JSON.parse(localStorage.getItem('projectsArray')) || [{"projectName": "defaultProject","todos": []},];
 
 //todo Project Factory Function, makes new todo projects
@@ -47,6 +50,8 @@ export function createNewProject(){
         createProjectList();
     }
     duplicateFound = false;
+
+    projectsDisplay();
 }
 
 export function createNewTODO(){
@@ -60,7 +65,7 @@ export function createNewTODO(){
     let todoProjectSelector = document.getElementById('selectProject').value;
   
     if (title === '' || description === '' || dueDate === '' || priority === '' || notes === ''){
-        alert('Please input a value into each field before submitting your book!');
+        alert('Please input a value into each field before submitting your todo!');
         document.getElementById('titleInput').value = '';
         document.getElementById('descriptionInput').value = '';
         document.getElementById('dueDateInput').value = '';
@@ -107,4 +112,6 @@ export function createNewTODO(){
         document.getElementById('notesInput').value = '';
         //document.getElementById('todoProjectSelector').value = '';
     }
+    userInterfaceDiv.style.display = "none";
+    projectsDisplay();
 }

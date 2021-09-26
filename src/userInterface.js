@@ -1,8 +1,6 @@
 import {contentDiv} from "./index.js";
 import {createNewTODO} from './todoFactory.js';
 import {selectProjectDiv} from "./projectSelectList.js";
-//import {projectsDisplay} from "./dataStructure.js";
-//import {projectsArray} from "./todoNewDisplay.js";
 
 export let userInterfaceDiv = document.createElement("div");
 userInterfaceDiv.id = "userInterfaceDiv";
@@ -52,9 +50,7 @@ export function userInterface() {
     let dueDateInput = document.createElement("input");
     dueDateInput.setAttribute("type", "text");
     dueDateInput.setAttribute("id", "dueDateInput");
-    //dueDateInput.setAttribute("name", "dueDateInput")
-    dueDateInput.setAttribute("placeholder", "Popup");
-    //dueDateInput.setAttribute("require", "");
+    dueDateInput.setAttribute("placeholder", "Select Due Date");
 
     dueDateInputDiv.appendChild(dueDateInputLabel);
     dueDateInputDiv.appendChild(dueDateInput);
@@ -102,36 +98,33 @@ export function userInterface() {
     userInterfaceDiv.appendChild(selectProjectDiv);
 
     let createNewTODOButton = document.createElement("button");
-    createNewTODOButton.innerText = "Add a new Todo";
+    createNewTODOButton.innerText = "Update Todo";
     createNewTODOButton.setAttribute("id", "createNewTODOButton");
     
-    //let todoDisplayButton = document.createElement("button");
-    //todoDisplayButton.innerText = "Display Current Todos";
-    //todoDisplayButton.setAttribute("id", "todoDisplayButton");
-    
     userInterfaceDiv.appendChild(createNewTODOButton);
-    //userInterfaceDiv.appendChild(todoDisplayButton);
-    //userInterfaceDiv.appendChild(projectInputDiv);
 
     contentDiv.appendChild(userInterfaceDiv);
-
-    //let projectContainer = document.createElement("div");
-    //projectContainer.setAttribute("id", "projectContainer");
 
     //createNewTODOButton runs the createNewTODO() function
     document.getElementById("createNewTODOButton").addEventListener('click', createNewTODO);
     
     let closeButton = document.createElement("button");
-        closeButton.textContent = "Close";
+    closeButton.textContent = "Close";
 
     closeButton.addEventListener("click", function(){
         userInterfaceDiv.style.display = "none";
         userInterfaceDiv.style.backgroundColor = "grey";
 
+        titleInput.value = '';
+        descriptionInput.value = '';
+        dueDateInput.value = '';
+        notesInput.value = '';
+
+        titleInput.setAttribute("placeholder", "Enter a name for your TODO");
+        descriptionInput.setAttribute("placeholder", "Enter a description for your TODO");
+        dueDateInput.setAttribute("placeholder", "Select Due Date");
+        notesInput.setAttribute("placeholder", "Enter any notes for your TODO");
     });
 
     userInterfaceDiv.appendChild(closeButton);
-
-    //todoDisplayButton runs the todoDisplay() function
-    //document.getElementById("todoDisplayButton").addEventListener('click', projectsDisplay);
 }

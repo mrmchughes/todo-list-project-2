@@ -1,7 +1,6 @@
 import {contentDiv} from "./index.js";
 import {projectsArray} from "./todoFactory.js";
 import {userInterfaceDiv} from "./userInterface.js";
-//import {createNewTODO} from "./todoFactory.js";
 
 let projectsDisplayDiv = document.createElement("div");
 
@@ -55,12 +54,39 @@ export function projectsDisplay(){
                     userInterfaceDiv.style.display = "block";
                     userInterfaceDiv.style.backgroundColor = "green";
 
-                    titleInput.placeholder = todo.title;
-                    descriptionInput.placeholder = todo.description;
-                    dueDateInput = todo.dueDate;
-                    priorityInput = todo.priority;
-                    notesInput.placeholder = todo.notes;
-                })
+                    titleInput.value = todo.title;
+                    descriptionInput.value = todo.description;
+                    dueDateInput.value = todo.dueDate;
+                    priorityInput.value = todo.priority;
+                    notesInput.value = todo.notes;
+
+                    createNewTODOButton.addEventListener("click", function(){
+                        let updateVariable = todo.title;
+                        
+                        projectsArray[i].todos = projectsArray[i].todos.filter(function( todo ){
+                            return todo.title !== updateVariable;
+                        });
+
+                        let jsonProjectsArray = JSON.stringify(projectsArray);
+                        localStorage.setItem('projectsArray', jsonProjectsArray); 
+                    
+                        console.log(projectsArray);
+                        projectsDisplay();
+
+                        userInterfaceDiv.style.display = "none";
+                        userInterfaceDiv.style.backgroundColor = "grey";
+
+                        titleInput.value = '';
+                        descriptionInput.value = '';
+                        dueDateInput.value = '';
+                        notesInput.value = '';
+
+                        titleInput.setAttribute("placeholder", "Enter a name for your TODO");
+                        descriptionInput.setAttribute("placeholder", "Enter a description for your TODO");
+                        dueDateInput.setAttribute("placeholder", "Select Due Date");
+                        notesInput.setAttribute("placeholder", "Enter any notes for your TODO");
+                    },{once: true});
+                });
                 
                 let deleteButton = document.createElement("button");
                 deleteButton.textContent = "Delete todo";
@@ -81,14 +107,6 @@ export function projectsDisplay(){
                     console.log(projectsArray);
                     projectsDisplay();
                 });
-
-                function remove(array, key, value) {
-                    const index = array.findIndex(obj => obj[key] === value);
-                    return index >= 0 ? [
-                        ...array.slice(0, index),
-                        ...array.slice(index + 1)
-                    ] : array;
-                }
 
                 let viewTodoButton = document.createElement("button");
                 viewTodoButton.textContent = "Expand todo";

@@ -13,19 +13,19 @@ export function projectsDisplay(){
         projectDiv.setAttribute("class", "projectDiv");
         projectDiv.innerText = projectsArray[i].projectName;
 
-        let createNewTODOButton = document.createElement("button");
-        createNewTODOButton.innerText = "Add a new Todo";
-        createNewTODOButton.setAttribute("id", "createNewTODOButton");
+        let newTODOButton = document.createElement("button");
+        newTODOButton.innerText = "New Todo";
+        newTODOButton.setAttribute("id", "newTODOButton");
 
-        createNewTODOButton.addEventListener("click", function(){
+        newTODOButton.addEventListener("click", function(){
             userInterfaceDiv.style.display = "block";
         })
 
-        projectDiv.appendChild(createNewTODOButton);
+        projectDiv.appendChild(newTODOButton);
 
         let projectDeleteButton = document.createElement("button");
         projectDeleteButton.setAttribute("class", "projectDeleteButton");
-        projectDeleteButton.textContent = 'Click to delete project';
+        projectDeleteButton.textContent = 'Delete project';
 
         projectDeleteButton.addEventListener("click", function(){
             projectsArray.splice(i, 1);
@@ -46,36 +46,63 @@ export function projectsDisplay(){
                 todoDivTextDiv.innerText += "\n Due on: " + todo.dueDate;
 
                 let editButton = document.createElement("button");
-                editButton.textContent = "Click to edit this dodo";
+                editButton.textContent = "Edit todo";
                 editButton.addEventListener("click", function(){
-                    //edit form fields
-                    console.log("I'm editButton");
                     userInterfaceDiv.style.display = "block";
+                    userInterfaceDiv.style.backgroundColor = "green";
+                    console.log("I am the edit button"); 
+                         
+                    userInterfaceDiv.style.display = "block";
+                    userInterfaceDiv.style.backgroundColor = "green";
+
+                    titleInput.placeholder = todo.title;
+                    descriptionInput.placeholder = todo.description;
+                    dueDateInput = todo.dueDate;
+                    priorityInput = todo.priority;
+                    notesInput.placeholder = todo.notes;
                 })
                 
                 let deleteButton = document.createElement("button");
-                deleteButton.textContent = "Click to delete todo";
+                deleteButton.textContent = "Delete todo";
                 deleteButton.addEventListener("click", function(){
-                    projectsArray[i].todos.splice(todo, 1);
+                    
+                    let testVariable = todo.title;
+                    console.log(testVariable + ' is in the process of being deleted');
+                    
+                    console.log(todo.title + ' deleted')
+                      
+                    projectsArray[i].todos = projectsArray[i].todos.filter(function( todo ){
+                        return todo.title !== testVariable;
+                    });
+
                     let jsonProjectsArray = JSON.stringify(projectsArray);
                     localStorage.setItem('projectsArray', jsonProjectsArray); 
+                    
                     console.log(projectsArray);
                     projectsDisplay();
                 });
 
+                function remove(array, key, value) {
+                    const index = array.findIndex(obj => obj[key] === value);
+                    return index >= 0 ? [
+                        ...array.slice(0, index),
+                        ...array.slice(index + 1)
+                    ] : array;
+                }
+
                 let viewTodoButton = document.createElement("button");
-                viewTodoButton.textContent = "Click to view todo";
+                viewTodoButton.textContent = "Expand todo";
                 viewTodoButton.addEventListener("click", function(){
                     todoDivTextDiv.innerText = '';
                     todoDivTextDiv.innerText += todo.title;
-                    todoDivTextDiv.innerText += "\n Description: " + todo.description;
                     todoDivTextDiv.innerText += "\n Due on: " + todo.dueDate;
+                    todoDivTextDiv.innerText += "\n Description: " + todo.description;
                     todoDivTextDiv.innerText += "\n Priority: " + todo.priority;
                     todoDivTextDiv.innerText += "\n Notes: " + todo.notes;
                 })
 
                 let closeTodoButton = document.createElement("button");
-                closeTodoButton.textContent = "Click to close todo";
+                closeTodoButton.textContent = "Collapse todo";
                 closeTodoButton.addEventListener("click", function(){
                     todoDivTextDiv.innerText = '';
                     todoDivTextDiv.innerText += todo.title;

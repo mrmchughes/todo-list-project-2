@@ -126,6 +126,8 @@ export function userInterface() {
 
     closeButton.addEventListener("click", function(){
         userInterfaceDiv.style.display = "none";
+        userInterfaceDiv.style.backgroundColor = "grey";
+
     });
 
     userInterfaceDiv.appendChild(closeButton);

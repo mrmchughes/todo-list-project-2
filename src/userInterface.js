@@ -1,6 +1,7 @@
 import {contentDiv} from "./index.js";
 import {createNewTODO} from './todoFactory.js';
 import {selectProjectDiv} from "./projectSelectList.js";
+//import {projectsDisplay} from "./dataStructure.js";
 
 export let userInterfaceDiv = document.createElement("div");
 userInterfaceDiv.id = "userInterfaceDiv";
@@ -112,18 +113,10 @@ export function userInterface() {
     closeButton.textContent = "Close";
 
     closeButton.addEventListener("click", function(){
+        userInterfaceDiv.innerHTML = '';
+        userInterface();
         userInterfaceDiv.style.display = "none";
         userInterfaceDiv.style.backgroundColor = "grey";
-
-        titleInput.value = '';
-        descriptionInput.value = '';
-        dueDateInput.value = '';
-        notesInput.value = '';
-
-        titleInput.setAttribute("placeholder", "Enter a name for your TODO");
-        descriptionInput.setAttribute("placeholder", "Enter a description for your TODO");
-        dueDateInput.setAttribute("placeholder", "Select Due Date");
-        notesInput.setAttribute("placeholder", "Enter any notes for your TODO");
     });
 
     userInterfaceDiv.appendChild(closeButton);

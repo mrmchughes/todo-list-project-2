@@ -1,7 +1,6 @@
 import {contentDiv} from "./index.js";
 import {createNewTODO} from './todoFactory.js';
 import {selectProjectDiv} from "./projectSelectList.js";
-//import {projectsDisplay} from "./dataStructure.js";
 
 export let userInterfaceDiv = document.createElement("div");
 userInterfaceDiv.id = "userInterfaceDiv";
@@ -118,7 +117,7 @@ export function userInterface() {
         userInterfaceDiv.innerHTML = '';
         userInterface();
         userInterfaceDiv.style.display = "none";
-        userInterfaceDiv.style.backgroundColor = "grey";
+        userInterfaceDiv.style.backgroundColor = "#9FB7B9";
     });
 
     userInterfaceDiv.appendChild(closeButton);

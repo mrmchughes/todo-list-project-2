@@ -44,13 +44,10 @@ export function projectsDisplay(){
                 editButton.setAttribute("class", "editButton");
                 editButton.addEventListener("click", function(){
                     userInterfaceDiv.style.display = "block";
-                    userInterfaceDiv.style.backgroundColor = "green";
+                    userInterfaceDiv.style.backgroundColor = "#84C0C6";
                     console.log("I am the edit button"); 
-                         
-                    userInterfaceDiv.style.display = "block";
-                    userInterfaceDiv.style.backgroundColor = "green";
-
-                    titleInput.value = todo.title;
+                    
+                    titleInput.value = todo.title + " ";
                     descriptionInput.value = todo.description;
                     dueDateInput.value = todo.dueDate;
                     priorityInput.value = todo.priority;
@@ -75,6 +72,7 @@ export function projectsDisplay(){
                         titleInput.value = '';
                         descriptionInput.value = '';
                         dueDateInput.value = '';
+                        priorityInput.value = '';
                         notesInput.value = '';
 
                         titleInput.setAttribute("placeholder", "Enter a name for your TODO");

@@ -99,6 +99,7 @@ export function userInterface() {
     userInterfaceDiv.appendChild(selectProjectDiv);
 
     let createNewTODOButton = document.createElement("button");
+    createNewTODOButton.setAttribute("class", "createNewTODOButton");
     createNewTODOButton.innerText = "Update Todo";
     createNewTODOButton.setAttribute("id", "createNewTODOButton");
     
@@ -110,6 +111,7 @@ export function userInterface() {
     document.getElementById("createNewTODOButton").addEventListener('click', createNewTODO);
     
     let closeButton = document.createElement("button");
+    closeButton.setAttribute("class", "closeButton");
     closeButton.textContent = "Close";
 
     closeButton.addEventListener("click", function(){

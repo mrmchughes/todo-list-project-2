@@ -1,10 +1,115 @@
+body {
+  background-color: #f2e2d2;
+}
+
 #projectInputDiv {
-  margin: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  align-items: center;
+}
+
+#projectInput {
+  font-size: 1rem;
+}
+
+#newTodoDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  align-items: center;
 }
 
 .projectDiv {
-  border: 1px solid red;
-  margin: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.projectDeleteButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.editButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.deleteButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.viewTodoButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.closeTodoButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.closeButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
+
+.createNewProjectButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.newTODOScreenButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.closeButton {
+  background-color: #bcc1ba;
+  border: 1px solid black;
+  margin: 5px;
+  color: black;
+  text-align: center;
+  padding: 5px;
 }
 
 .userInterfaceDiv {
@@ -18,12 +123,11 @@
 }
 
 .todoDiv {
-  border: 1px solid purple;
-  margin-top: 10px;
-}
-
-.projectDeleteButton {
-  margin-left: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2.5px solid #9fb7b9;
 }
 
 /* (A) POPUP */

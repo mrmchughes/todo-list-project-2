@@ -95,6 +95,7 @@ let editTitleInputDiv = document.createElement("div");
         editForm.appendChild(editNotesInputDiv);
 
         let closeButton = document.createElement("button");
+        closeButton.setAttribute("class", "closeButton");
         closeButton.textContent = "Close edit form";
 
         closeButton.addEventListener("click", function(){

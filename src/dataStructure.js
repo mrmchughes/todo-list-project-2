@@ -10,17 +10,12 @@ export function projectsDisplay(){
     for (const [i] in projectsArray) {
         let projectDiv = document.createElement("div");
         projectDiv.setAttribute("class", "projectDiv");
-        projectDiv.innerText = projectsArray[i].projectName;
 
-        let newTODOButton = document.createElement("button");
-        newTODOButton.innerText = "New Todo";
-        newTODOButton.setAttribute("id", "newTODOButton");
+        let projectDivLabel = document.createElement("label");
+        projectDivLabel.textContent = projectsArray[i].projectName;
+        projectDivLabel.setAttribute("for", "projectDeleteButton");
 
-        newTODOButton.addEventListener("click", function(){
-            userInterfaceDiv.style.display = "block";
-        })
-
-        projectDiv.appendChild(newTODOButton);
+        projectDiv.appendChild(projectDivLabel);
 
         let projectDeleteButton = document.createElement("button");
         projectDeleteButton.setAttribute("class", "projectDeleteButton");
@@ -46,6 +41,7 @@ export function projectsDisplay(){
 
                 let editButton = document.createElement("button");
                 editButton.textContent = "Edit todo";
+                editButton.setAttribute("class", "editButton");
                 editButton.addEventListener("click", function(){
                     userInterfaceDiv.style.display = "block";
                     userInterfaceDiv.style.backgroundColor = "green";
@@ -60,7 +56,7 @@ export function projectsDisplay(){
                     priorityInput.value = todo.priority;
                     notesInput.value = todo.notes;
 
-                    createNewTODOButton.addEventListener("click", function(){
+                    document.getElementById('createNewTODOButton').addEventListener("click", function(){
                         let updateVariable = todo.title;
                         
                         projectsArray[i].todos = projectsArray[i].todos.filter(function( todo ){
@@ -90,6 +86,7 @@ export function projectsDisplay(){
                 
                 let deleteButton = document.createElement("button");
                 deleteButton.textContent = "Delete todo";
+                deleteButton.setAttribute("class", "deleteButton");
                 deleteButton.addEventListener("click", function(){
                     
                     let testVariable = todo.title;
@@ -110,6 +107,7 @@ export function projectsDisplay(){
 
                 let viewTodoButton = document.createElement("button");
                 viewTodoButton.textContent = "Expand todo";
+                viewTodoButton.setAttribute("class", "viewTodoButton");
                 viewTodoButton.addEventListener("click", function(){
                     todoDivTextDiv.innerText = '';
                     todoDivTextDiv.innerText += todo.title;
@@ -121,6 +119,7 @@ export function projectsDisplay(){
 
                 let closeTodoButton = document.createElement("button");
                 closeTodoButton.textContent = "Collapse todo";
+                closeTodoButton.setAttribute("class", "closeTodoButton");
                 closeTodoButton.addEventListener("click", function(){
                     todoDivTextDiv.innerText = '';
                     todoDivTextDiv.innerText += todo.title;

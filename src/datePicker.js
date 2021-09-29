@@ -177,7 +177,7 @@ export let picker = {
           today = new Date(),
           todayDate = null;
       if (today.getUTCMonth()+1 == month && today.getUTCFullYear() == year) {
-        todayDate = today.getUTCDate();
+        todayDate = today.getUTCDate()+2;
       }
       for (var i=0; i<total; i++) {
         if (i!=total && i%7==0) { row = table.insertRow(); }

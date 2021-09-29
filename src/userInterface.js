@@ -17,7 +17,7 @@ export function userInterface() {
     titleInput.setAttribute("type", "text");
     titleInput.setAttribute("id", "titleInput");
     titleInput.setAttribute("name", "titleInput")
-    titleInput.setAttribute("placeholder", "Enter a name for your TODO");
+    titleInput.setAttribute("placeholder", "Enter name for Todo");
     titleInput.setAttribute("require", "");
 
     titleInputDiv.appendChild(titleInputLabel);
@@ -34,7 +34,7 @@ export function userInterface() {
     descriptionInput.setAttribute("type", "text");
     descriptionInput.setAttribute("id", "descriptionInput");
     descriptionInput.setAttribute("name", "descriptionInput")
-    descriptionInput.setAttribute("placeholder", "Enter a description for your TODO");
+    descriptionInput.setAttribute("placeholder", "Enter description for Todo");
     descriptionInput.setAttribute("require", "");
 
     descriptionInputDiv.appendChild(descriptionInputLabel);
@@ -88,7 +88,7 @@ export function userInterface() {
     notesInput.setAttribute("type", "text");
     notesInput.setAttribute("id", "notesInput");
     notesInput.setAttribute("name", "notesInput")
-    notesInput.setAttribute("placeholder", "Enter any notes for your TODO");
+    notesInput.setAttribute("placeholder", "Enter notes for Todo");
     notesInput.setAttribute("require", "");
 
     notesInputDiv.appendChild(notesInputLabel);
@@ -117,7 +117,7 @@ export function userInterface() {
         userInterfaceDiv.innerHTML = '';
         userInterface();
         userInterfaceDiv.style.display = "none";
-        userInterfaceDiv.style.backgroundColor = "#9FB7B9";
+        userInterfaceDiv.style.backgroundColor = "#07a0c3";
     });
 
     userInterfaceDiv.appendChild(closeButton);

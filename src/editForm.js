@@ -1,3 +1,4 @@
+//did not end up using this form, in the future the concept might be handy, better to have a different screen for normal/edit
 import {contentDiv} from "./index.js";
 
 export let editFormDiv = document.createElement("div");

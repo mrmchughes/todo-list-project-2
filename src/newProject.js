@@ -13,7 +13,7 @@ export function newProjectAndTodoInput(){
     projectInput.setAttribute("type", "text");
     projectInput.setAttribute("id", "projectInput");
     projectInput.setAttribute("name", "projectInput")
-    projectInput.setAttribute("placeholder", "Enter the name of your new project: ");
+    projectInput.setAttribute("placeholder", "Project name");
     projectInput.setAttribute("require", "");
 
     let createNewProjectButton = document.createElement("button");
@@ -43,6 +43,7 @@ export function newProjectAndTodoInput(){
     newTODOScreenButton.setAttribute("id", "newTODOScreenButton");
 
     newTODOScreenButton.addEventListener("click", function(){
+        //in the future, would like to have the opacity on other elements lowered
         userInterfaceDiv.style.display = "block";
     })
 

@@ -25,7 +25,6 @@ export function projectsDisplay(){
             projectsArray.splice(i, 1);
             let jsonProjectsArray = JSON.stringify(projectsArray);
             localStorage.setItem('projectsArray', jsonProjectsArray); 
-            console.log(projectsArray);
             projectsDisplay();
         });
 
@@ -44,8 +43,7 @@ export function projectsDisplay(){
                 editButton.setAttribute("class", "editButton");
                 editButton.addEventListener("click", function(){
                     userInterfaceDiv.style.display = "block";
-                    userInterfaceDiv.style.backgroundColor = "#84C0C6";
-                    console.log("I am the edit button"); 
+                    userInterfaceDiv.style.backgroundColor = "#84C0C6"; 
                     
                     titleInput.value = todo.title + " ";
                     descriptionInput.value = todo.description;
@@ -63,11 +61,10 @@ export function projectsDisplay(){
                         let jsonProjectsArray = JSON.stringify(projectsArray);
                         localStorage.setItem('projectsArray', jsonProjectsArray); 
                     
-                        console.log(projectsArray);
                         projectsDisplay();
 
                         userInterfaceDiv.style.display = "none";
-                        userInterfaceDiv.style.backgroundColor = "grey";
+                        userInterfaceDiv.style.backgroundColor = "#07a0c3";
 
                         titleInput.value = '';
                         descriptionInput.value = '';
@@ -88,9 +85,6 @@ export function projectsDisplay(){
                 deleteButton.addEventListener("click", function(){
                     
                     let testVariable = todo.title;
-                    console.log(testVariable + ' is in the process of being deleted');
-                    
-                    console.log(todo.title + ' deleted')
                       
                     projectsArray[i].todos = projectsArray[i].todos.filter(function( todo ){
                         return todo.title !== testVariable;
@@ -99,7 +93,6 @@ export function projectsDisplay(){
                     let jsonProjectsArray = JSON.stringify(projectsArray);
                     localStorage.setItem('projectsArray', jsonProjectsArray); 
                     
-                    console.log(projectsArray);
                     projectsDisplay();
                 });
 

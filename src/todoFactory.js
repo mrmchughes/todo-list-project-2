@@ -23,8 +23,6 @@ export function createNewProject(){
     let duplicateFound = false;
         
     for (const project of projectsArray){
-        console.log('projectInput.value ' + projectInput.value);
-        console.log('project.projectName ' + project.projectName);
 
         if (projectInput.value == project.projectName){
             duplicateFound = true;        
@@ -33,11 +31,9 @@ export function createNewProject(){
     }  
 
     if (duplicateFound){
-        console.log("createNewProject, project already exists");
-        alert('This Project already exists.');
+        //alert('This Project already exists.');
         projectInput.value = '';
     } else {
-        console.log('createNewProject. new project made');
         projectsArray.push(new TODOProject(projectInput.value));
         projectInput.value = '';
       
@@ -83,18 +79,13 @@ export function createNewTODO(){
         let doesProjectExist = false;
 
         for (let i = 0; i < projectsArray.length; i++) {
-            console.log('projectSelector ' + todoProjectSelector + ' comparing to: ' + projectsArray[i].projectName);
     
             if (todoProjectSelector == projectsArray[i].projectName){  
-                console.log('This project selection exists!');
                 doesProjectExist = true;
             } 
             
-            if (doesProjectExist){
-                alert(todo.title + ' added to ' + projectsArray[i].projectName);
-                
-                projectsArray[i].todos.push(todo);
-                
+            if (doesProjectExist){                
+                projectsArray[i].todos.push(todo);        
     
                 let jsonProjectsArray = JSON.stringify(projectsArray);
                 localStorage.setItem('projectsArray', jsonProjectsArray); 
@@ -110,7 +101,6 @@ export function createNewTODO(){
         document.getElementById('dueDateInput').value = '';
         document.getElementById('priorityInput').value = '';
         document.getElementById('notesInput').value = '';
-        //document.getElementById('todoProjectSelector').value = '';
     }
     userInterfaceDiv.style.display = "none";
     projectsDisplay();

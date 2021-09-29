@@ -1,6 +1,5 @@
 import {userInterface} from './userInterface.js';
 import {createProjectList} from "./projectSelectList.js";
-import {projectsArray} from "./todoFactory.js";
 import {picker} from "./datePicker.js";
 import {projectsDisplay} from "./dataStructure.js";
 import {newProjectAndTodoInput} from "./newProject.js";
@@ -13,7 +12,6 @@ window.onload = function() {
     userInterface();
     createProjectList();
     projectsDisplay();
-    console.log(projectsArray);
     picker.attach({
         target: 'dueDateInput'
     });

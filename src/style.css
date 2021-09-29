@@ -1,5 +1,5 @@
 body {
-  background-color: #f2e2d2;
+  background-color: #fff1d0;
 }
 
 #projectInputDiv {
@@ -29,8 +29,8 @@ body {
   flex-wrap: wrap;
 }
 
-.projectDeleteButton {
-  background-color: #bcc1ba;
+button {
+  background-color: #a4adb6;
   border: 1px solid black;
   margin: 5px;
   color: black;
@@ -38,97 +38,22 @@ body {
   padding: 5px;
 }
 
-.editButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.deleteButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.viewTodoButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.closeTodoButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.closeButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.createNewProjectButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-  font-size: 1rem;
-}
-
-.newTODOScreenButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-  font-size: 1rem;
-}
-
-.closeButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
-}
-
-.createNewTODOButton {
-  background-color: #bcc1ba;
-  border: 1px solid black;
-  margin: 5px;
-  color: black;
-  text-align: center;
-  padding: 5px;
+button:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em #07a0c3;
+  transform: translateY(-0.25em);
+  cursor: pointer;
 }
 
 .userInterfaceDiv {
   display: none;
   position: fixed;
-  left: 45%;
+  left: 50%;
   top: 5%;
   transform: translate(-50%, 5%);
-  border: 5 px solid blue;
-  background-color: #9fb7b9;
+  border: 2.5px solid black;
+  background-color: #07a0c3;
+  width: 350px;
+  padding: 25px;
 }
 
 .todoDiv {
@@ -136,10 +61,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 2.5px solid #9fb7b9;
+  padding: 5px;
+  border-top: 2.5px solid #07a0c3;
 }
 
-/* (A) POPUP */
+/* The below CSS is adapted from W.S. Toh at https://code-boxx.com/simple-datepicker-pure-javascript-css/#sec-extra */
 .picker-wrap {
   position: fixed;
   top: 0;
@@ -160,25 +86,25 @@ body {
   transform: translateY(-50%);
 }
 
-/* (B) CONTAINER */
 .picker {
   max-width: 500px;
-  background: #444444;
+  background: #f5f5f5;
   padding: 10px;
+  border: 2.5px solid black;
 }
 
-/* (C) MONTH + YEAR */
 .picker-m,
 .picker-y {
   width: 50%;
   padding: 5px;
   box-sizing: border-box;
   font-size: 16px;
+  background-color: #a4adb6;
+  border: 1px solid black;
 }
 
-/* (D) DAY */
 .picker-d table {
-  color: #fff;
+  color: black;
   border-collapse: separate;
   width: 100%;
   margin-top: 10px;
@@ -188,25 +114,23 @@ body {
   padding: 5px;
   text-align: center;
 }
-/* HEADER CELLS */
+
 .picker-d-h td {
   font-weight: bold;
 }
-/* BLANK DATES */
+
 .picker-d-b {
   background: #4e4e4e;
+  opacity: 0;
 }
-/* TODAY */
+
 .picker-d-td {
-  background: #d84f4f;
+  background: #ea4b48;
 }
-/* PICKABLE DATES */
+
 .picker-d-d:hover {
   cursor: pointer;
-  background: #a33c3c;
-}
-/* UNPICKABLE DATES */
-.picker-d-dd {
-  color: #888;
-  background: #4e4e4e;
+  background: #ea4b48;
+  box-shadow: 0 0.5em 0.5em -0.4em #07a0c3;
+  transform: translateY(-0.1em);
 }

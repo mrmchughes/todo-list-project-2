@@ -4,6 +4,10 @@ This is my implementation of The Odin Project's Todo List project.
 # Motivation
 I created this project as part of The Odin Project's JavaScript curriculum.
 
+# Screenshots
+
+Main ![image](https://user-images.githubusercontent.com/10659805/172234883-f6d0bd42-cd2d-4efc-a971-732cb0f855b7.png)
+
 # Tech/framework used 
 This project utilized: HTML/CSS | JavaScript | Git | Webpack | Local Storage
 
